@@ -1,0 +1,30 @@
+body {
+  padding: 10px;
+  font-family: sans-serif;
+  background-color: #FFA374;
+}
+
+.bg-red{
+  background-color: #d05c62;
+}
+
+.bg-orange{
+background-color: #f3671f;  
+}
+
+.bg-btn{
+  background-color: #FFA374;
+}
+
+.bg-brown{
+  background-color: rgb(187, 95, 49);
+}
+
+
+/* 
+@media screen and (max-width: 360px) {
+  .carousel-inner{
+ 
+     height :"50px" ;
+  }
+} */

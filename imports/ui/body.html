@@ -1,0 +1,268 @@
+ <body>
+
+{{> navbar}}
+
+{{> col}}
+
+
+
+
+
+
+
+<!-- {{> listereservation}} -->
+
+{{> jumbotron}}
+
+<!-- {{#each ateliersparticulier}}
+<div class="col-sm my-2">
+  plop
+</div>
+{{/each}} -->
+<!-- {{ct}} -->
+{{> carousel}}
+
+
+
+<div class="">
+    
+    <section class="bg-red py-5" id="Atelier">
+        <h2 class="text-center">LISTES DES RESERVATIONS</h2>
+        {{> cartereservation}}
+   </section>
+
+    
+      
+    </div>
+<!-- {{#unless currentUser}}
+{{> atForm}}
+{{/unless}} -->
+
+{{#if currentUser}}
+{{> accueil}}
+
+<section class="bg-red rounded-bottom">
+    <div class="container d-flex justify-content-center">
+        <div class="row my-4">
+            {{#each ateliers}}
+                <div class="col-sm my-2">
+                    {{> carte}}
+                </div>
+            {{/each}}
+        </div>
+    </div>
+</section>
+
+{{/if}}
+
+
+{{#unless currentUser}}
+
+<section class="bg-red rounded-bottom">
+    <div class="container d-flex justify-content-center">
+        <div class="row my-4">
+            {{#each desactive}}
+                <div class="col-sm my-2">
+                    {{> carte}}
+                </div>
+            {{/each}}
+        </div>
+    </div>
+</section>
+
+{{/unless}}
+
+
+
+
+    <!--Modal Insert-->
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Créer Atelier</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+
+                <form class="new-atelier">
+
+
+                        <input class="form-control  my-2" type="text" name="modal1nomcuisinier" placeholder="Nom du cuisinier"/>
+        
+                        <input class="form-control  my-2" type="text" name="modal1prenomcuisinier" placeholder="Prénom du cuisinier"/>
+        
+                        <input class="form-control  my-2" type="text" name="modal1spécialitécuisinier" placeholder="Spécialité du cuisinier"/>
+
+                        <input class="form-control  my-2" type="text" name="modal1title" placeholder="Nom de l'atelier"/>
+        
+                        <input class="form-control  my-2" type="text" name="modal1text" placeholder="Un descriptif"/>
+        
+                        <input class="form-control  my-2" type="date" name="modal1date" placeholder="Entrer la date"/>
+            
+                        <input class="form-control  my-2" type="time" name="modal1horaire" placeholder="Entrer l'heure de début"/>
+        
+                        <input class="form-control  my-2" type="time" name="modal1duree" placeholder="Entrer la duree"/>
+            
+                        <input class="form-control  my-2" type="number" name="modal1dispo" placeholder="Le nombre de places disponibles"/>
+            
+                        <input class="form-control  my-2" type="numder" name="modal1prix" placeholder="Entrer le prix"/>
+        
+                        <input class="form-control  my-2" type="text" name="modal1image" placeholder="Entrer une image"/> 
+
+                        <!-- <input type="hidden" id="edit-id" name="editId"/> -->
+                    
+                        <button type="submit" class="btn btn-primary">Insérer</button>
+                        
+                            
+                    </form>
+
+
+            </div>
+           
+        </div>
+      </div>
+    </div>
+    <!--/Modal Insert-->
+
+    <!--Modal Edit-->
+    <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Créer Atelier</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                </div>
+                <div class="modal-body">
+                   
+                    <form class="save">
+
+                            <input class="form-control  my-2" type="text" name="modal2nomcuisinier" id="editnomcuisinier" placeholder="Nom du cuisinier"/>
+        
+                            <input class="form-control  my-2" type="text" name="modal2prenomcuisinier" id="editprenomcuisinier" placeholder="Prénom du cuisinier"/>
+            
+                            <input class="form-control  my-2" type="text" name="modal2spécialitécuisinier" id="editspécialitécuisinier" placeholder="Spécialité du cuisinier"/>
+    
+                            <input class="form-control  my-2" type="text" name="modal2title" id="editTitle" placeholder="Nom de l'atelier"/>
+            
+                            <input class="form-control  my-2" type="text" name="modal2text" id="editText" placeholder="Un descriptif"/>
+            
+                            <input class="form-control  my-2" type="date" name="modal2date" id="editDate" placeholder="Entrer la date"/>
+                
+                            <input class="form-control  my-2" type="time" name="modal2horaire" id="editHoraire" placeholder="Entrer l'heure de début"/>
+            
+                            <input class="form-control  my-2" type="time" name="modal2duree" id="editDuree" placeholder="Entrer la duree"/>
+                
+                            <input class="form-control  my-2" type="number" name="modal2dispo" id="editDispo" placeholder="Le nombre de places disponibles"/>
+                
+                            <input class="form-control  my-2" type="numer" name= "modal2prix" id="editPrix" placeholder="Entrer le prix"/>
+            
+                            <input class="form-control  my-2" type="text" name="modal2image" id="editImage" placeholder="Entrer une image"/> 
+    
+                            <input type="hidden" id="edit-id" name="editId"/>
+
+                            <input type="hidden" id="edit-ownerid" name="editownerid"/>
+
+                            <input type="hidden" name="modal3DateAtelier" id="date-atelier" />
+
+                            <input type="hidden" name="modal3nomatelier" id="nom-atelier" />
+                        
+                            <button type="submit" class="btn btn-primary">Sauvegarder</button>
+                                
+                        </form>
+    
+    
+                </div>
+               
+            </div>
+          </div>
+        </div>
+        <!--/Modal Edit-->
+ <!--Modal reservation-->
+    <div class="modal fade" id="exampleModal3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Réservation</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+
+                <form class="new-reserve">
+
+                        <input class="form-control  my-2" type="text" name="Name" id="name" placeholder="Nom"/>
+        
+                        <input class="form-control  my-2" type="text" name="Prenom" id="prenom" placeholder="Prénom"/>
+        
+                        <input class="form-control  my-2" type="text" name="Tel" id="tel" placeholder="Téléphone"/>
+            
+                        <input class="form-control  my-2" type="text" name="Email" id="email" placeholder="Email"/>
+        
+                        <input class="form-control  my-2" type="text" name="Place" id="place" placeholder="Nombre de place à réserver"/>
+                   <a href="">incorect</a> 
+                        <button type="submit" class="btn btn-primary">Réserver</button>
+                            
+                    </form>
+
+
+            </div>
+            
+        </div>
+        </div>
+    </div>
+ <!--/Modal reservation-->
+
+ <!-- modal delete -->
+ <div class="modal fade" id="exampleModal4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- FORMULAIRE DU MODAL -->
+        
+                    <form class=" delete-atelier remove ">
+    
+                       <H1> Voulez-vous effacer cet atelier</H1>
+        
+                        <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">NON</button>
+                                <button type="submit" class="btn btn-primary  del" data-dismiss="modal" >OUI</button>
+                        </div>
+                    
+                    </form>
+                    
+                        <!-- /FORMULAIRE DU MODAL -->
+            </div>
+            
+            </div>
+        </div>
+        </div>
+        <!--/ modal delete -->
+        {{> footer}}
+
+</body>
+
+
+<template name="accueil">
+    <!-- <button class="btn btn-xs btn-default js-logout"> Se déconnecter</button> -->
+    {{> atelier}}
+
+   
+</template>
+
+
+<template name="listereservation">
+  
+   
+</template>

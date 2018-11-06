@@ -1,0 +1,153 @@
+<template name="carte">
+        
+        <div class="card" style="width: 18rem;">
+<!-- AJOUT DU BTN CHECKBOX -->
+
+                <label class="hide-completed" >
+
+                    <input type="checkbox"  checked={{checked}}  class="toggle-checked"  /> 
+
+                    Désactiver Cet Atelier
+
+                  </label>
+
+                <img class="card-img-top" src="{{image}}" height="250px" alt="Card image cap">
+
+                <div class="card-body">
+                  <h5 class="card-title text-center">{{title}}</h5> <!--TO DO VARIABLE FOR HREF AND ID COLLAPSE-->
+
+                  <p class="card-text m-0">{{text}}</p>
+                  <p class="card-text m-0"> prévu le:{{date}}</p>
+                  <p class="card-text m-0">à :{{horaire}}</p>
+                  <p class="card-text m-0">durée:{{duree}}</p>
+                  <p class="card-text m-0">places disponibles:({{dispo}}/{{max}})</p>
+                  <p class="card-text m-0">places réservés:({{reserve}}/{{max}})</p>
+                  <p class="card-text m-0">prix:{{prix}}€</p>
+                  <p class="card-text m-0">crée par :{{atnomcuisinier }} {{atprenomcuisinier}}</p>
+                  <p class="card-text m-0">spécilaité:{{atspécialitécuisinier}}</p>
+              
+                  <div class="row d-flex justify-content-center my-2">
+                    <span class="mx-1">{{> modal2}}</span>
+                    <span >{{> modal3}}</span>
+                      <!-- RAJOUTE DE LA CROIX POUR EFFACER -->
+                      <span class="mx-1">   <button type="button" class="delete btn btn-primary"  data-toggle="modal" data-target="#exampleModal4"   data-id="{{_id}}">
+                    <span aria-hidden="true">&times;  <!--supprimer --></span>
+                </button></span>
+                  </div>
+                  
+                </div>
+              </div>
+              
+
+</template>
+<template name="anciencarte">
+        
+    <div class="card" style="width: 18rem;">
+<!-- AJOUT DU BTN CHECKBOX -->
+<label class="hide-completed">
+
+<input type="checkbox"  checked={{checked}}  class="toggle-checked"/>
+
+Désactiver Cet Atelier
+
+</label>
+
+        <!-- RAJOUTE DE LA CROIX POUR EFFACER -->
+            <button type="button" class="delete"  data-toggle="modal" data-target="#exampleModal3"   data-id="{{_id}}">
+                    <span aria-hidden="true">&times; supprimer</span>
+             </button>
+
+            <img class="card-img-top" src="{{image}}" height="300" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title text-center">{{title}}</h5> <!--TO DO VARIABLE FOR HREF AND ID COLLAPSE-->
+              <a class="btn btn-primary d-flex justify-content-center" data-toggle="collapse" href="#{{_id}}" role="button" aria-expanded="false" aria-controls="collapseExample">
+                Plus d'infos
+              </a>
+              <div class="collapse" id="{{_id}}">
+                <div class="card card-body">
+                  <p class="card-text">{{text}}</p>
+                  <p class="card-text">{{date}}</p>
+                  <p class="card-text">{{horaire}}</p>
+                  <p class="card-text">{{duree}}</p>
+                  <p class="card-text">{{dispo}}</p>
+                  <p class="card-text">{{prix}}</p>
+                </div>
+              </div>
+              
+                <!-- {{#each reser }}
+                {{#if   {{idAtelier }} == {{_id}}}}
+                      
+                    <p> {{Name }}  </p>
+                    <p>   {{Prenom }}  </p>
+                    <p>   {{Tel }} </p>
+                    <p>   {{Email }}  </p>
+                    <p>    {{Place }} </p>
+                    <p>    {{idAtelier }} </p>
+                    <p>    {{createdAt }} </p>
+
+              {{/if}}
+              {{/each  }} -->
+              <div class="row d-flex justify-content-center my-2">
+                <span class="mx-1">{{> modal2}}</span>
+                <span>{{> modal3}}</span>
+              </div>
+              
+            </div>
+          </div>
+
+
+</template>
+
+<template name="cartereservation">
+
+
+
+    <section class="bg-red rounded-bottom">
+        <div class="container d-flex justify-content-center">
+      
+            <div class="row my-4">
+                <!-- <h1>Liste des réservations</h1> -->
+                {{#each reser}}
+                    <div class="col-sm my-2">
+                    
+    
+    
+    
+    
+                        <div class="card" style="width: 15rem;">
+                            <!-- <img class="card-img-top" src="..." alt="Card image cap"> -->
+                            <h1>reservation</h1>
+                            <div class="card-body">
+                          
+                              <p> {{Name }}   {{Prenom }} 
+                               <a>a reservé  {{Place }} place(s)</a> 
+                               pour l'atelier : {{title}}
+                               qui se deroulera le:   {{date}} <br>
+                               <!-- contact: <br> -->
+                                 Tél:{{Tel }}  <br>
+                                 Email:{{Email }}  <br> 
+
+                            
+                              
+                                
+                             
+                               </p>
+                                <!-- RAJOUTE DE LA CROIX POUR EFFACER -->
+                    <button type="button" class="delres"  data-toggle="modal" data-target=""   data-id="{{_id}}">
+                            <span aria-hidden="true">&times;</span>
+                     </button>
+                             
+                            </div>
+                          </div>
+    
+    
+    
+    
+                    </div>
+                {{/each}}
+            </div>
+        </div>
+    </section>
+    
+
+</template>
